@@ -31,7 +31,7 @@
         
         
         {{-- Teacher Post --}}
-        
+        @if (optional(auth('member')->user())->role == 'student')
             <div class="row justify-content-center">
                 <div class="col-lg-7 text-center mb-5">
                 
@@ -78,8 +78,10 @@
                 {{-- </a> --}}
             @endforeach   
         </div>
-        
+        @endif
 
+        
+        @if (optional(auth('member')->user())->role == 'teacher')
             <div class="row justify-content-center">
                     <div class="col-lg-7 text-center mb-5">
                         <h4>Student Post</h4> 
@@ -125,7 +127,7 @@
                 {{-- </a> --}}
             @endforeach   
         </div>
-           
+        @endif
 
         <!-- end cart -->
     </div>

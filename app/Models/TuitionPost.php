@@ -23,4 +23,11 @@ class TuitionPost extends Model
     
     }
 
+    // TuitionPost.php
+    public function applications()
+    {
+        return $this->hasMany(ApplyPost::class, 'tuition_post_id');
+    }
+
+
 }

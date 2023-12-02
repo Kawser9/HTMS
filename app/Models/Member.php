@@ -13,4 +13,5 @@ class Member extends Authenticatable
     protected $hidden=[
         'password'
     ];
+    
 }

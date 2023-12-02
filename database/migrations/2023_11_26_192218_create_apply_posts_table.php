@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('apply_posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('tuition_post_id')->constrained();
+            $table->foreignId('user_id')->constrained('members')->restrictOnDelete();
+            $table->foreignId('tuition_post_id')->constrained('tuition_posts')->restrictOnDelete();
             $table->string('status')->default('pending');
             $table->timestamps();
             

@@ -23,7 +23,6 @@
 
                 <a class="btn btn-primary btn-rounded btn-lg text-white mb-3" href="{{Route('my.post',auth('member')->user()->id)}}">My Post</a>
                 <a class="btn btn-primary btn-rounded btn-lg text-white mb-3" href="{{Route('applicent',auth('member')->user()->id)}}">Applyed</a>
-
                 {{-- <div class="d-flex justify-content-between text-center mt-5 mb-2">
                         <div>
                             <p class="mb-2 h5 text-white">8471</p>
@@ -53,23 +52,33 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Tuition Post Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Contuct</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Salary</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($apply_posts as $applypost)
+                  @foreach($myPost as $detail)
                         <tr>
-                            <th scope="row">{{$applypost->id}}</th>
-                            <td>{{$applypost->created_at}}</td>
-                            <td>{{$applypost->tuition_post_id}}</td>
-                            <td>{{$applypost->status}}</td>
+                            <th scope="row">{{$detail->id}}</th>
+                            <td>{{$detail->name}}</td>
+                            <td>{{$detail->email}}</td>
+                            <td>{{$detail->class_list}}</td>
+                            <td>{{$detail->subject_name}}</td>
+                            <td>{{$detail->contact}}</td>
+                            <td>{{$detail->address}}</td>
+                            <td>{{$detail->salary}}</td>
+                            <td>{{$detail->status}}</td>
                             <td>
-                              @if($applypost->status=='pending')
-                              <a class="btn btn-danger" href="{{route('apply.cancel',$applypost->id)}}">Cancel Apply</a>
-                              @endif 
+                              
+                              <a class="btn btn-danger" href="{{Route('request',$detail->id)}}">View</a>
+                              
                         </tr>
                   @endforeach  
                 </tbody>

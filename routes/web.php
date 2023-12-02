@@ -63,6 +63,10 @@ Route::group(['middleware'=>'frontendAuth'],function(){
     //Mypost
     Route::get('/myPost/{id}',[MyPostController::class,'myPost'])->name('myPost');
 
+    Route::get('/applicents/{id}',[ApplyPostController::class,'applicent'])->name('applicent');
+    Route::get('/my/post/{id}',[ApplyPostController::class,'myPost'])->name('my.post');
+    Route::get('/my/post/request/{id}',[ApplyPostController::class,'request'])->name('request');
+
 
 });
 

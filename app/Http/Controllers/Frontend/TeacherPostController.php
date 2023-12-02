@@ -48,10 +48,10 @@ class TeacherpostController extends Controller
             }
         
             TuitionPost::create([
-                'name'=>auth()->user()->name, // feild name --request --name property
+                'name'=>auth('member')->user()->name, // feild name --request --name property
                 'role'=>$request->role,
                 'email'=>$request->email,
-                'user_id'=>auth()->user()->id,
+                'user_id'=>auth('member')->user()->id,
               
                 'class_list'=>$request->class_list,
                 'subject_name'=>$request->subject_name,
