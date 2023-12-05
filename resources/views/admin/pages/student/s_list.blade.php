@@ -21,6 +21,7 @@
         <th scope="col">Contact</th>
         <th scope="col">Address</th>
         <th scope="col">Image</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
         </tr>
     </thead>
@@ -38,9 +39,15 @@
         <td>{{$studentList->address}}</td>
         <td><img class="img" src="{{url('/uploads/'.$studentList->image)}}" alt="img"></td>
         <td>
-            <a href="{{route('studentlist.edit',$studentList->id)}}" class="btn btn-success">Edit</a>
+        <span class="post-status {{$studentList->status}}">
+            {{$studentList->status}}
+        </span>
+        </td>
+        <td>
+            <a href="{{route('teacherlist.edit',$studentList->id)}}" class="btn btn-success">Edit</a>
             <a href="{{route('studentlist.delete',$studentList->id)}}" class="btn btn-danger">Delete</a>
         </td>
+
         </tr>
         @endforeach
      
@@ -49,3 +56,22 @@
 
 </div>
 @endsection
+
+<style>
+    .post-status {
+        padding: 3px 5px;
+        border-radius: 9px;
+        font-weight: bold;
+    }
+
+    .post-status.pending {
+        color: white;
+        background-color: red;
+    }
+
+    .post-status.approved {
+        color: white;
+        background-color: green;
+    }
+</style>
+

@@ -29,17 +29,28 @@
                         <h6>Salary: {{$singlepost->salary}} .BDT</h6>
                         <h6>Contact: {{$singlepost->contact}}</h6>
                         
+                        @php
+                            $userApplied = $singlepost->applications()->where('user_id', auth('member')->user()->id)->get();
+                        @endphp
 
                         
-                        @if(!$singlepost->applications()->where('user_id', auth('member')->user()->id)->exists())
+                        @if ($userApplied->isEmpty())
                             <a class="btn btn-primary" href="{{ route('apply.post.now', $singlepost->id) }}" role="button">Apply</a>
+                        @elseif ($userApplied->first()->status == 'cancelled')
+                             <p style="color: rgb(106, 0, 255); margin-top:5px;">Your Request Is Cancelled</p>
+                        @elseif ($userApplied->first()->status == 'accepted')
+                            <p style="color: rgb(0, 255, 30); margin-top:5px;">Your Request Is Accepted</p>
                         @else
                             <p style="color: red; margin-top:5px;">You Already Applied to This Post</p>
                         @endif
 
-                        {{-- <blockquote class="mb-4">
-                        <p>Class: {{$tpost->class_lits}}</p>
-                        </blockquote> --}}
+                        
+                        {{-- @if(!$singlepost->applications()->where('user_id', auth('member')->user()->id)->exists())
+                            <a class="btn btn-primary" href="{{ route('apply.post.now', $singlepost->id) }}" role="button">Apply</a>
+                        @else
+                            <p style="color: red; margin-top:5px;">You Already Applied to This Post</p>
+                        @endif --}}
+
                         
 
                         

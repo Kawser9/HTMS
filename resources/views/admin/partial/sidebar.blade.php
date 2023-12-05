@@ -28,13 +28,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('student.list')}}">
                     <i class="fa-solid fa-chalkboard-user"></i>
-                    <span>Student List</span></a>
+                    <span>Students Post List</span></a>
             </li>
             
             <li class="nav-item">
                 <a class="nav-link" href="{{route('teacher.list')}}">
                     <i class="fa-solid fa-user-graduate"></i>
-                    <span>Teacher List</span></a>
+                    <span>Teachers Post List</span></a>
             </li>
             
             

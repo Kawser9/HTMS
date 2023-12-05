@@ -48,11 +48,10 @@
     <div class="row d-flex align-items-center justify-content-center  ">
         <div class="col-md-3">
               <table class="text-dark table table-sm table-dark">
-                <div class="text-dark"> <h6>Applied Post</h6> </div>
+                <div class="text-dark"> <h6>My All Post</h6> </div>
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Class</th>
                     <th scope="col">Subject</th>
@@ -66,8 +65,7 @@
                 <tbody>
                   @foreach($myPost as $detail)
                         <tr>
-                            <th scope="row">{{$detail->id}}</th>
-                            <td>{{$detail->name}}</td>
+                            <th scope="row">{{$loop->iteration}}</th>
                             <td>{{$detail->email}}</td>
                             <td>{{$detail->class_list}}</td>
                             <td>{{$detail->subject_name}}</td>
@@ -77,7 +75,8 @@
                             <td>{{$detail->status}}</td>
                             <td>
                               
-                              <a class="btn btn-danger" href="{{Route('request',$detail->id)}}">View</a>
+                              <a class="btn btn-danger" href="{{Route('request',$detail->id)}}">View Request</a>
+                              <a class="btn btn-danger" href="{{Route('my.post.edit',$detail->id)}}">Edit</a>
                               
                         </tr>
                   @endforeach  

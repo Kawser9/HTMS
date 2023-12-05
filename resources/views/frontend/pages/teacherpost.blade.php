@@ -10,7 +10,7 @@
             <label for="">Role:</label>
             <select required class="form-control" name="role" id="">
 
-                <option value="tuitor">Tuitor</option>
+                <option value="tutor">Tutor</option>
                 <!-- <option value="student">Student</option> -->
             </select>
         </div>

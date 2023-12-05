@@ -11,19 +11,18 @@ class TuitionPost extends Model
     protected $guarded=[
         
     ];
-    public function subject() //mothod
+    public function subject()   
     {
-        return $this->belongsTo(Subject::class);//,'subject_name'
+        return $this->belongsTo(Subject::class);
     }
 
 
-    public function classt() //mothod
+    public function classt() 
     {
         return $this->belongsTo(Classt::class);
     
     }
 
-    // TuitionPost.php
     public function applications()
     {
         return $this->hasMany(ApplyPost::class, 'tuition_post_id');

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     public function Teacherlist(){
-        $TeacherList=TuitionPost::where('role','tuitor')->get();
+        $TeacherList=TuitionPost::where('role','tutor')->get();
         return view('admin.pages.teacher.teacher_list',compact('TeacherList'));
     }
 
@@ -49,28 +49,29 @@ class TeacherController extends Controller
         if($tUpdate)
         {
 
-          $fileName=$tUpdate->image;
-          if($request->hasFile('image'))
-          {
-              $file=$request->file('image');
-              $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+          // $fileName=$tUpdate->image;
+          // if($request->hasFile('image'))
+          // {
+          //     $file=$request->file('image');
+          //     $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
 
-              $file->storeAs('/uploads',$fileName);
+          //     $file->storeAs('/uploads',$fileName);
 
-          }
+          // }
 
           $tUpdate->update([ // database column name-- form name property
-            'name'=>$request->name,
-            'role'=>$request->role,
-            'email'=>$request->email,
-            'class_list'=>$request->class_list,
-            'subject_name'=>$request->subject_name,
-            'salary'=>$request->salary,
-            'status'=>$request->status,
-            'contact'=>$request->contact,
-            'address'=>$request->address,
 
-            'image'=>$fileName
+            'status'=>$request->status
+            // 'name'=>$request->name,
+            // 'role'=>$request->role,
+            // 'email'=>$request->email,
+            // 'class_list'=>$request->class_list,
+            // 'subject_name'=>$request->subject_name,
+            // 'salary'=>$request->salary,
+            // ,
+            // 'contact'=>$request->contact,
+            // 'address'=>$request->address,
+            // 'image'=>$fileName
           ]);
 
           notify()->success('Teacher List updated successfully.');

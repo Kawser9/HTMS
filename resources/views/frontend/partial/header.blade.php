@@ -15,7 +15,7 @@
                         
                         <li><a href="{{route('home')}}" class="nav-link">Home</a></li>
 
-                        {{--  --}}
+                        {{-- Buy preemum --}}
                         @if (auth('member')->user())
           
         
@@ -26,7 +26,7 @@
                                 $tutionPostCount = \App\Models\TuitionPost::where('user_id', auth('member')->user()->id)->count();
                             @endphp
                            
-                           @if ($tutionPostCount < 3)
+                           @if ($tutionPostCount < 29)
                                @if (auth('member')->user()->role == 'teacher')
                                    <li><a href="{{ route('teacher.create.tuition.post') }}" class="nav-link">Create Tuition</a></li>
                                @else

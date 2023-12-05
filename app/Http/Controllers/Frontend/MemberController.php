@@ -20,9 +20,12 @@ class MemberController extends Controller
     // profile view
     public function profile()
     {
-        
-        $apply_posts=ApplyPost::where('user_id',auth('member')->user()->id)->get();
-        return view('frontend.pages.profile',compact('apply_posts'));
+        $applicentDetail=ApplyPost::with('TuitionPost')->where('user_id',auth('member')->user()->id)->where('status','accepted')->get();
+        // dd($applicentDetail->all());
+        return view('frontend.pages.profile',compact('applicentDetail'));
+
+        // $apply_posts=ApplyPost::where('status','accepted')->where('user_id',auth('member')->user()->id)->get();
+        // return view('frontend.pages.profile',compact('apply_posts'));
     }
 
 

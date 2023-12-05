@@ -48,6 +48,7 @@ Route::group(['middleware'=>'frontendAuth'],function(){
     // apply to the tuition post
     Route::get('/apply-now/{tuitionPost_id}',[ApplyPostController::class,'applyNow'])->name('apply.post.now');
     Route::get('/cancel-apply/{tuitionPost_id}',[ApplyPostController::class,'cancelApply'])->name('apply.cancel');
+    Route::get('/accept-apply/{tuitionPost_id}',[ApplyPostController::class,'acceptApply'])->name('apply.accepted');
 
     // teacher post to the website
     Route::get('/teacher/post',[TeacherpostController::class,'teacherpost'])->name('teacher.create.tuition.post');
@@ -66,6 +67,9 @@ Route::group(['middleware'=>'frontendAuth'],function(){
     Route::get('/applicents/{id}',[ApplyPostController::class,'applicent'])->name('applicent');
     Route::get('/my/post/{id}',[ApplyPostController::class,'myPost'])->name('my.post');
     Route::get('/my/post/request/{id}',[ApplyPostController::class,'request'])->name('request');
+    Route::get('/my/request/edit/{id}',[ApplyPostController::class,'request_edit'])->name('request.edit');
+    Route::get('/my/post/edit/{id}', [ApplyPostController::class, 'edit'])->name('my.post.edit');
+    Route::put('/my/post/update/{id}',[ApplyPostController::class, 'update'])->name('my.post.update');
 
 
 });

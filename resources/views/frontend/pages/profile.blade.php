@@ -43,38 +43,42 @@
     </div>
     </div>
  </div>
-
 <div class="container">
 
-    <div class="row d-flex align-items-center justify-content-center  ">
-        <div class="col-md-3">
-              <table class="text-dark table table-sm table-dark">
-                <div class="text-dark"> <h6>Applied Post</h6> </div>
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Tuition Post Id</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach($apply_posts as $applypost)
-                        <tr>
-                            <th scope="row">{{$applypost->id}}</th>
-                            <td>{{$applypost->created_at}}</td>
-                            <td>{{$applypost->tuition_post_id}}</td>
-                            <td>{{$applypost->status}}</td>
-                            <td>
-                              @if($applypost->status=='pending')
-                              <a class="btn btn-danger" href="{{route('apply.cancel',$applypost->id)}}">Cancel Apply</a>
-                              @endif 
-                        </tr>
-                  @endforeach  
-                </tbody>
-              </table>
-        </div>
-    </div>  
-</div>    
+  <div class="row d-flex align-items-center justify-content-center  ">
+      <div class="col-md-3">
+            <table class="text-dark table table-sm table-dark">
+              <div class="text-dark"> <h6>Accepted Apply</h6> </div>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Class</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Contuct</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Salary</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($applicentDetail as $applicent)
+                      <tr>
+                          <th scope="row">{{$loop->iteration}}</th>
+                          <td>{{$applicent->TuitionPost->name}}</td>
+                          <td>{{$applicent->TuitionPost->email}}</td>
+                          <td>{{$applicent->TuitionPost->class_list}}</td>
+                          <td>{{$applicent->TuitionPost->subject_name}}</td>
+                          <td>{{$applicent->TuitionPost->contact}}</td>
+                          <td>{{$applicent->TuitionPost->address}}</td>
+                          <td>{{$applicent->TuitionPost->salary}}</td>
+                          <td>{{$applicent->status}}</td>
+                      </tr>
+                @endforeach  
+              </tbody>
+            </table>
+      </div>
+  </div>  
+</div> 
 @endsection

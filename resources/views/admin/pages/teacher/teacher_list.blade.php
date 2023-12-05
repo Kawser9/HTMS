@@ -21,6 +21,7 @@
         <th scope="col">Contact</th>
         <th scope="col">Address</th>
         <th scope="col">Image</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
         </tr>
     </thead>
@@ -38,6 +39,11 @@
         <td>{{$TList->address}}</td>
         <td><img class="img" src="{{url('/uploads/'.$TList->image)}}" alt="img"></td>
         <td>
+            <span class="post-status {{$TList->status}}">
+                {{$TList->status}}
+            </span>
+            </td>
+        <td>
             <a href="{{route('teacherlist.edit',$TList->id)}}" class="btn btn-success">Edit</a>
             <a href="{{route('teacherlist.delete',$TList->id)}}" class="btn btn-danger">Delete</a>
         </td>
@@ -49,4 +55,25 @@
 
 </div>
 @endsection
+
+
+<style>
+    .post-status {
+        padding: 3px 5px;
+        border-radius: 9px;
+        font-weight: bold;
+    }
+
+    .post-status.pending {
+        color: white;
+        background-color: red;
+    }
+
+    .post-status.approved {
+        color: white;
+        background-color: green;
+    }
+</style>
+
+
 

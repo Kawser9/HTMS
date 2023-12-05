@@ -4,7 +4,7 @@
 
 
 <div class="container">
-    <h2 class="mb-3" style="font-size: 30px">Teacher Post</h2>
+    <h2 class="mb-3" style="font-size: 30px">Update {{$teacherEdit->role}} Post Status</h2>
     <!-- enctype="multipart/form-data" -->
     <form action="{{route('teacherlist.update',$teacherEdit->id)}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -19,7 +19,7 @@
                 {{-- <option @if($teacherEdit->status=='cancel') selected @endif value="cancel">Cancel</option> --}}
             </select>
         </div>
-<hr>
+{{-- <hr>
         <div class="form-group">
             <label for="name">Name:</label>
             <input value="{{$teacherEdit->name}}" name="name" type="text" class="form-control" id="name" placeholder="Enter your name">
@@ -94,14 +94,32 @@
         <div class="form-group">
             <label for="">Upload Your Image: </label>
             <input value="{{$teacherEdit->image}}" name="image" type="file" class="form-control">
-        </div>
+        </div> --}}
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="update-button">Submit</button>
     </form>
 
 
 </div>
+@endsection
+<style>
+    .update-button {
+      display: inline-block;
+      padding: 5px 15px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid #3498db;
+      color: #3498db;
+      border-radius: 5px;
+      background-color: white;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-
-
-@endsection 
+    .update-button:hover {
+      background-color: #3498db;
+      color: white;
+    }
+  </style> 

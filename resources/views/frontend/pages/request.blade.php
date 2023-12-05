@@ -48,7 +48,7 @@
     <div class="row d-flex align-items-center justify-content-center  ">
         <div class="col-md-3">
               <table class="text-dark table table-sm table-dark">
-                <div class="text-dark"> <h6>Applied Post</h6> </div>
+                <div class="text-dark"> <h6>Request on my post</h6> </div>
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -66,7 +66,7 @@
                 <tbody>
                   @foreach($request as $details)
                         <tr>
-                            <th scope="row">{{$details->id}}</th>
+                            <th scope="row">{{$loop->iteration}}</th>
                             <td>{{$details->member->name}}</td>
                             <td>{{$details->member->email}}</td>
                             <td>{{$details->TuitionPost->class_list}}</td>
@@ -76,10 +76,16 @@
                             <td>{{$details->TuitionPost->salary}}</td>
                             <td>{{$details->status}}</td>
                             <td>
-                              @if($details->status=='pending')
-                              <a class="btn btn-danger" href="">Edit</a>
-                              @endif 
-                        </tr>
+                              @if($details->status == 'pending')
+                                  <a class="btn btn-danger" href="{{ route('apply.accepted', $details->id) }}">Accept Apply</a>
+                              @endif
+
+                              @if(in_array($details->status, ['accepted', 'pending']))
+                                  <a class="btn btn-danger" href="{{ route('apply.cancel', $details->id) }}">Cancel Apply</a>
+                              @endif
+                            </td>
+
+                        </tr> 
                   @endforeach  
                 </tbody>
               </table>
